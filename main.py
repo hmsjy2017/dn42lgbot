@@ -30,7 +30,9 @@ def ping(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Pinging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Pinging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['ping', context.args[0], '-c', '4', '-W', '5'],
         stdout=subprocess.PIPE,
@@ -47,7 +49,9 @@ def ping4(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Pinging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Pinging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['ping', context.args[0], '-c', '4', '-W', '5', '-4'],
         stdout=subprocess.PIPE,
@@ -64,7 +68,9 @@ def ping6(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Pinging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Pinging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['ping', context.args[0], '-c', '4', '-W', '5', '-6'],
         stdout=subprocess.PIPE,
@@ -81,7 +87,9 @@ def trace(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Tracing route in 10s...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Tracing route in 10s...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'traceroute', context.args[0]],
         stdout=subprocess.PIPE,
@@ -98,7 +106,9 @@ def trace4(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Tracing route in 10s...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Tracing route in 10s...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'traceroute', '-4', context.args[0]],
         stdout=subprocess.PIPE,
@@ -115,7 +125,9 @@ def trace6(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Tracing route in 10s...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Tracing route in 10s...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'traceroute', '-6', context.args[0]],
         stdout=subprocess.PIPE,
@@ -132,7 +144,9 @@ def dig(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Digging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Digging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'dig', '+nocmd', context.args[0]],
         stdout=subprocess.PIPE,
@@ -148,7 +162,9 @@ def dig6(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Digging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Digging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'dig', 'aaaa', '+nocmd', context.args[0]],
         stdout=subprocess.PIPE,
@@ -164,7 +180,9 @@ def digall(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Digging...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Digging...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'dig', 'any', '+nocmd', context.args[0]],
         stdout=subprocess.PIPE,
@@ -181,7 +199,9 @@ def nslookup(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Querying...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Querying...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'nslookup', context.args[0]],
         stdout=subprocess.PIPE,
@@ -198,7 +218,9 @@ def whois(update: Update, context: CallbackContext):
         context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
             update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
             return
-    msg = update.message.reply_text('Looking up whois...')
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Looking up whois...', reply_to_message_id=original_message_id)
     msg.edit_text('```\n' + subprocess.run(
         ['timeout', '15s', 'whois', '-h', WHOIS_SERVER, context.args[0]],
         stdout=subprocess.PIPE,
