@@ -1,0 +1,3 @@
+WHOIS_SERVER = '172.22.0.43'
+BOT_TOKEN = ''
+CERNET = False
