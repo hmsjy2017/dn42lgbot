@@ -227,6 +227,30 @@ def whois(update: Update, context: CallbackContext):
         stderr=subprocess.STDOUT).stdout.decode() + '\n```', parse_mode='MarkdownV2')
 
 
+def path(update: Update, context: CallbackContext):
+    if len(context.args) == 0:
+        update.message.reply_text('Usage: /path [target]')
+        return
+    if CERNET:
+        if re.match(dn42_ipv4_pattern, context.args[0]) is None and re.match(neo_ipv4_pattern,
+                                                                             context.args[0]) is None and not \
+        context.args[0].endswith('.dn42') and not context.args[0].endswith('.neo'):
+            update.message.reply_text('Only DN42 ping is allowed on Chinese nodes.')
+            return
+    user_message = update.message.text
+    original_message_id = update.message.message_id
+    msg = update.message.reply_text('Querying path...', reply_to_message_id=original_message_id)
+    command = ['timeout', '15s', 'birdc', 'show route for', context.args[0], 'all', 'primary']
+    result = subprocess.run(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT)
+    result_str = result.stdout.decode('utf-8')
+    as_path_matches = re.findall(r'BGP\.as_path: (.+)', result_str)
+    msg.edit_text('```\n' + '\n'.join(as_path_matches) + '\n```', parse_mode='MarkdownV2')
+
+		
+
 if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('start', start, run_async=True))
     dispatcher.add_handler(CommandHandler('ping', ping, run_async=True))
@@ -240,6 +264,7 @@ if __name__ == '__main__':
     dispatcher.add_handler(CommandHandler('digall', digall, run_async=True))
     dispatcher.add_handler(CommandHandler('nslookup', nslookup, run_async=True))
     dispatcher.add_handler(CommandHandler('whois', whois, run_async=True))
+    dispatcher.add_handler(CommandHandler('path', path, run_async=True))
 
     updater.start_polling()
 

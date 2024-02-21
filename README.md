@@ -18,7 +18,8 @@ dig - Dig an A record
 dig6 - Dig an AAAA record
 digall - Dig all records
 nslookup - Lookup IP addresses
-whois - Whois information query
+whois - Query information
+path - Query ASN path
 ```
 
 ## 使用方法
