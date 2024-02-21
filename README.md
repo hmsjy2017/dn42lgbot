@@ -14,11 +14,11 @@ ping6 - Ping an IPv6 address
 trace - Traceroute an address
 trace4 - Traceroute an IPv4 address
 trace6 - Traceroute an IPv6 address
-dig - Dig an A record
-dig6 - Dig an AAAA record
+dig - Dig A record
+dig6 - Dig AAAA record
 digall - Dig all records
 nslookup - Lookup IP addresses
-whois - Query information
+whois - Query whois information
 path - Query ASN path
 ```
 
